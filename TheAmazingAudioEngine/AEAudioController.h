@@ -419,6 +419,11 @@ typedef void (*AEAudioControllerMainThreadMessageHandler)(AEAudioController *aud
 @interface AEAudioController : NSObject
 
 #pragma mark - Setup and start/stop
+
+
++ (instancetype)sharedAudio;
+
+
 /** @name Setup and start/stop */
 ///@{
 

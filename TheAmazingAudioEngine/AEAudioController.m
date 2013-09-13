@@ -299,6 +299,14 @@ static void performLevelMonitoring(audio_level_monitor_t* monitor, AudioBufferLi
 
 @dynamic    running, inputGainAvailable, inputGain, audiobusOutputPort, inputAudioDescription, inputChannelSelection;
 
++ (instancetype)sharedAudio
+{
+    static dispatch_once_t onceToken;
+    static AEAudioController *instance = nil;
+    dispatch_once(&onceToken, ^{ instance = [[self alloc] initWithAudioDescription:[AEAudioController nonInterleaved16BitStereoAudioDescription] inputEnabled:YES useVoiceProcessing:YES]; });
+    return instance;
+}
+
 #pragma mark - Audio session callbacks
 
 static AEAudioController * __interruptionListenerSelf = nil;
